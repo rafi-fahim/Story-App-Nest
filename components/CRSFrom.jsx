@@ -1,0 +1,144 @@
+"use client";
+import React from 'react'
+import { useState } from "react";
+import { motion } from "framer-motion";
+
+const CRSFrom = () => {
+    const [storyData, setStoryData] = useState({
+      name: "",
+      occupation: "",
+      class: "",
+      section: "",
+      storyText: "",
+      time: "",
+    });
+    function hanldeStoryData(event) {
+      const { name, value, type, checked } = event.target;
+      setStoryData((prevStorydata) => {
+        return {
+          ...prevStorydata,
+          [name]: value,
+        };
+      });
+    }
+    const checkCpsc = () => {
+      if (storyData.occupation === "cpscian") {
+        return (
+          <>
+            <input
+              type="text"
+              placeholder="Your Class"
+              className="border w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
+              name="class"
+              onChange={hanldeStoryData}
+            />
+            <div className="flex flec-col gap-1">
+              <label htmlFor="section">Choose your section</label>
+              <select
+                className="bg-light-dark"
+                onChange={hanldeStoryData}
+                name="section"
+                id="section"
+              >
+                <option className="bg-light-dark" value="none">
+                  --none--
+                </option>
+                <option className="bg-light-dark" value="dahlia">
+                  Dahlia
+                </option>
+                <option className="bg-light-dark" value="daffo">
+                  Daffo
+                </option>
+                <option className="bg-light-dark" value="dolon">
+                  Dolon
+                </option>
+                <option className="bg-light-dark" value="shapla">
+                  Shapla
+                </option>
+                <option className="bg-light-dark" value="mohua">
+                  Mohua
+                </option>
+              </select>
+            </div>
+          </>
+        );
+      }
+    };
+    function surprise() {
+      if (storyData.class === "8" && storyData.section === "daffo") {
+        alert("We are in same section, brother!!😮");
+        // return "We are in same section, Brother"
+      }
+    }
+    return (
+      <>
+        <motion.div className="center p-4 w-[600px] h-[400px] border border-slate-950 rounded-xl bg-[#4568E4] ">
+          <h1 className="text-center text-white text-2xl">Write your fabilous Story. 😀</h1>
+          <form className="flex items-center flex-col mt-4 gap-2 p-3">
+            <motion.input
+              type="text"
+              placeholder="Your name"
+              className="border w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
+              onChange={hanldeStoryData}
+              name="name"
+              whileTap={{ scale: 1.2 }}
+            />
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="occupation"
+                className="border w-[230px] text-white h-9 rounded-lg p-1 bg-light-dark border-col-1"
+              >
+                Choose your Occupation
+              </label>
+              <select
+                className="flex flec-col text-slate-100 rounded-sm bg-slate-900 gap-1 w-[230px]"
+                onChange={hanldeStoryData}
+                name="occupation"
+                id="occupation"
+              >
+                <option className="bg-slate-900" value="none">
+                  --none--
+                </option>
+                <option className="bg-slate-900" value="student">
+                  Student
+                </option>
+                <option className="bg-slate-900" value="job">
+                  Job
+                </option>
+                <option className="bg-slate-900" value="cpscian">
+                  CPSCIAN
+                </option>
+                <option className="bg-slate-900" value="other">
+                  Other
+                </option>
+              </select>
+            </div>
+            {storyData.occupation === "student" && (
+              <motion.input
+                type="text"
+                placeholder="Your Class"
+                className="border w-[230px] h-9 rounded-lg bg-light-dark p-1 border-green-400"
+                name="class"
+                onChange={hanldeStoryData}
+              />
+            )}
+            {checkCpsc()}
+            <textarea
+              name="storyText"
+              className="border bg-light-dark w-full text-black border-emerald-700 p-3 "
+              placeholder={`${storyData.name}${
+                storyData.name ? ", " : ""
+              }Write your story`}
+              onChange={hanldeStoryData}
+            />
+            <motion.button whileHover={{scale: 1.1}} whileTap={{scale: 1.5}} className="justify-items-center h-10 w-20 rounded hover:bg-emerald-950 hover:border-emerald-400 hover:border-2 bg-emerald-700 text-white ">
+              Submit
+            </motion.button>
+          </form>
+        </motion.div>
+      </>
+    );
+  };
+  
+
+export default CRSFrom
