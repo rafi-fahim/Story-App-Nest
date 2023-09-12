@@ -3,17 +3,34 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import image from "@/public/empty-profile.png";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { UserAuth } from "@/app/context/AuthContext";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [toogleMenu, setToogleMenu] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
+  const { user, googleSignIn, logOut } = UserAuth();
   function toggleProfileFunc() {
     setToggleProfile((prev) => !prev);
   }
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn()
+    } catch(err){
+      console.log(err);
+    }
+  } 
+  const handleSignOut = async () => {
+    try {
+      await logOut()
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  console.log(user);
+
   return (
     <>
       <nav className="flex justify-between p-4 h-16 text-center bg-stone-800 text-white items-center">
@@ -46,12 +63,12 @@ const Navbar = () => {
           </Link>
           <Link className="hover:underline" href="/read-story">
             Read Story
-          </Link>{" "}
+          </Link>
           <button type="button" onClick={() => setToogleMenu((prev) => !prev)}>
             Toogle Menu
           </button>
         </motion.div>
-        {isLoggedIn ? (
+        {user ? (
           <>
             <div className="flex justify-center items-center gap-2">
               <Link
@@ -70,6 +87,9 @@ const Navbar = () => {
               {toggleProfile && (
                 <>
                   <Link href="/profile">Go to Profile</Link>
+                  <button type="button" className="hover:underline hover:text-red-500" onClick={() => handleSignOut()}>
+                    Sign Out
+                  </button>
                 </>
               )}
             </div>
@@ -77,7 +97,7 @@ const Navbar = () => {
         ) : (
           <button
             type="button"
-            onClick={() => signIn()}
+            onClick={() => handleSignIn()}
             className="w-36 rounded-3xl bg-indigo-500 hover:bg-indigo-800 border border-slate-200"
           >
             Sign In
