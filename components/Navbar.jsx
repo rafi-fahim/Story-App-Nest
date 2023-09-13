@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import image from "@/public/empty-profile.png";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { motion } from "framer-motion";
 import { UserAuth } from "@/app/context/AuthContext";
 
@@ -12,9 +12,23 @@ const Navbar = () => {
   const [toogleMenu, setToogleMenu] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
   const { user, googleSignIn, logOut } = UserAuth();
+  const [profilePic, setProfilePic] = useState(image)
+
+  useEffect(() => {  
+    if (user) {
+      try{
+        setProfilePic(user.photoURL)
+      } catch(err) {
+        console.log("the error is: " + err);
+      }
+    }
+  }, [user])
+  
+
   function toggleProfileFunc() {
     setToggleProfile((prev) => !prev);
   }
+
   const handleSignIn = async () => {
     try {
       await googleSignIn()
@@ -22,6 +36,7 @@ const Navbar = () => {
       console.log(err);
     }
   } 
+
   const handleSignOut = async () => {
     try {
       await logOut()
@@ -29,6 +44,7 @@ const Navbar = () => {
       console.log(err);
     }
   }
+
   console.log(user);
 
   return (
@@ -81,7 +97,9 @@ const Navbar = () => {
               <Image
                 onClick={() => toggleProfileFunc()}
                 className="rounded-full h-[35px] w-[35px]"
-                src={image}
+                src={profilePic}
+                width={35}
+                height={35}
                 alt="Profile-Pic"
               />
               {toggleProfile && (
