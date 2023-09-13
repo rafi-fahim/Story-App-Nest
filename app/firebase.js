@@ -8,7 +8,7 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBgDqUPmqi54mtRKRC9Rpskb_DrwpyNHWQ",
-  authDomain: "story-app-61fa5.firebaseapp.com",
+  authDomain: "https://story-app-nest-1-mxbenxfzs-fahim-shakil.vercel.app/",
   projectId: "story-app-61fa5",
   storageBucket: "story-app-61fa5.appspot.com",
   messagingSenderId: "64972224858",
