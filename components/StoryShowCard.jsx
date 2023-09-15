@@ -10,6 +10,9 @@ const StoryShowCard = ({
   userSection,
   userOccupation,
   userStory,
+  userId,
+  userLikeCount,
+  storyDate,
 }) => {
 
 

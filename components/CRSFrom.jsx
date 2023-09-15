@@ -13,6 +13,7 @@ const CRSFrom = ({ userId }) => {
     class: "",
     section: "",
     storyText: "",
+    likeCount: 0,
     time: "",
     uid: "",
   });
@@ -20,9 +21,20 @@ const CRSFrom = ({ userId }) => {
 
   const handleStorySubmit = async () => {
     try {
+      let today = new Date();
+      let date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+      let time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let dateTime = date + " " + time;
       const docRef = await addDoc(collection(db, "stories"), {
         ...storyData,
-        uid: userId
+        uid: userId,
+        time: dateTime
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
