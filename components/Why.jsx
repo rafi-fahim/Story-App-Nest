@@ -24,7 +24,7 @@ const Why = () => {
   ];
   return (
     <>
-      <div className="grid content-center items-center grid-cols-3 max-sm:grid-cols-1 gap-3 p-4">
+      <div className="grid content-center justify-items-center grid-cols-3 max-sm:grid-cols-1 gap-3 p-4">
         {cardInfo.map((item) => (
           <WhyCard
             key={item.key}

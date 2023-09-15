@@ -48,7 +48,7 @@ const CRSFrom = ({ userId }) => {
           <input
             type="text"
             placeholder="Your Class"
-            className="border w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
+            className="border shadow-md shadow-slate-600 w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
             name="class"
             onChange={(e) => {
               setStoryData((prev) => {
@@ -106,7 +106,11 @@ const CRSFrom = ({ userId }) => {
   }
   return (
     <>
-      <motion.div className="center p-4 w-[600px] h-[400px] border border-slate-950 rounded-xl bg-[#4568E4] ">
+      <motion.div 
+          className="center shadow-lg shadow-indigo-500 p-4 w-[600px] h-[400px] border border-slate-950 rounded-xl bg-[#4568E4] "
+          initial={{ scale:0 }}
+          animate={{ scale:1 }}
+        >
         <h1 className="text-center text-white text-2xl">
           Write your fabilous Story. 😀
         </h1>
@@ -120,7 +124,7 @@ const CRSFrom = ({ userId }) => {
           <motion.input
             type="text"
             placeholder="Your name"
-            className="border w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
+            className="border shadow-md shadow-slate-600 w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
             onChange={(e) => {
               setStoryData((prev) => {
                 return {
@@ -135,12 +139,12 @@ const CRSFrom = ({ userId }) => {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="occupation"
-              className="border w-[230px] text-white h-9 rounded-lg p-1 bg-light-dark border-col-1"
+              className="border shadow-md shadow-slate-600 w-[230px] text-white h-9 rounded-lg p-1 bg-light-dark border-col-1"
             >
               Choose your Occupation
             </label>
             <select
-              className="flex flec-col text-slate-100 rounded-sm bg-slate-900 gap-1 w-[230px]"
+              className="flex flec-col text-slate-100 rounded-sm bg-slate-900 gap-1 shadow-md shadow-slate-600 w-[230px]"
               onChange={(e) => {
                 setStoryData((prev) => {
                   return {
@@ -173,7 +177,7 @@ const CRSFrom = ({ userId }) => {
             <motion.input
               type="text"
               placeholder="Your Class"
-              className="border w-[230px] h-9 rounded-lg bg-light-dark p-1 border-green-400"
+              className="border shadow-md shadow-slate-600 w-[230px] h-9 rounded-lg bg-light-dark p-1 border-green-400"
               name="class"
               onChange={(e) => {
                 setStoryData((prev) => {
