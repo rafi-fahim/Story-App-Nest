@@ -49,79 +49,84 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between p-4 h-16 text-center bg-stone-800 text-white items-center">
-        {/* PC Menu */}
-        <div className="sm:block none flex justify-center items-center gap-2">
-          <Link className="hover:underline mr-3" href="/">
-            Home
-          </Link>
-          <Link className="hover:underline" href="/read-story">
-            Read Story
-          </Link>
-        </div>
-        {/* Mobile Menu */}
-        <button
-          type="button"
-          className={`${!toggleProfile ? "block" : "none"} none max-sm:block `}
-          onClick={() => setToogleMenu((prev) => !prev)}
-        >
-          Toogle Menu
-        </button>
-        <motion.div
-          className={`bg-indigo-400 ${
-            toogleMenu ? "block" : "none"
-          } flex justify-start flex-col gap-2 text-start -left-0 -top-0  absolute w-[100px] h-[200px]`}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-        >
-          <Link className="hover:underline" href="/">
-            Home
-          </Link>
-          <Link className="hover:underline" href="/read-story">
-            Read Story
-          </Link>
-          <button type="button" onClick={() => setToogleMenu((prev) => !prev)}>
-            Toogle Menu
-          </button>
-        </motion.div>
-        {user ? (
-          <>
-            <div className="flex justify-center items-center gap-2">
-              <Link
-                href="/create-story"
-                type="button"
-                className="w-36 p-[2px] rounded-3xl bg-indigo-500 hover:bg-indigo-800 border border-slate-200"
-              >
-                Create Story
-              </Link>
-              <Image
-                onClick={() => toggleProfileFunc()}
-                className="rounded-full h-[35px] w-[35px]"
-                src={profilePic}
-                width={35}
-                height={35}
-                alt="Profile-Pic"
-              />
-              {toggleProfile && (
-                <>
-                  <Link href="/profile">Go to Profile</Link>
-                  <button type="button" className="hover:underline hover:text-red-500" onClick={() => handleSignOut()}>
-                    Sign Out
-                  </button>
-                </>
-              )}
-            </div>
-          </>
-        ) : (
+      
+        <nav className="flex justify-between p-4 h-16 text-center bg-stone-800 text-white items-center">
+          {/* PC Menu */}
+          <div className="sm:block none flex justify-center items-center gap-2">
+            <Link className="hover:underline mr-3" href="/">
+              Home
+            </Link>
+            <Link className="hover:underline mr-3" href="/read-story">
+              Read Story
+            </Link>
+            <Link className="hover:underline" href="/about-us">
+              About Us
+            </Link>
+          </div>
+          {/* Mobile Menu */}
           <button
             type="button"
-            onClick={() => handleSignIn()}
-            className="w-36 rounded-3xl bg-indigo-500 hover:bg-indigo-800 border border-slate-200"
+            className={`${!toggleProfile ? "block" : "none"} none max-sm:block `}
+            onClick={() => setToogleMenu((prev) => !prev)}
           >
-            Sign In
+            Toogle Menu
           </button>
-        )}
-      </nav>
+          <motion.div
+            className={`bg-indigo-400 ${
+              toogleMenu ? "block" : "none"
+            } flex justify-start flex-col gap-2 text-start -left-0 -top-0  absolute w-[100px] h-[200px]`}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+          >
+            <Link className="hover:underline" href="/">
+              Home
+            </Link>
+            <Link className="hover:underline" href="/read-story">
+              Read Story
+            </Link>
+            <button type="button" onClick={() => setToogleMenu((prev) => !prev)}>
+              Toogle Menu
+            </button>
+          </motion.div>
+          {user ? (
+            <>
+              <div className="flex justify-center items-center gap-2">
+                <Link
+                  href="/create-story"
+                  type="button"
+                  className="w-36 p-[2px] rounded-3xl bg-indigo-500 hover:bg-indigo-800 border border-slate-200"
+                >
+                  Create Story
+                </Link>
+                <Image
+                  onClick={() => toggleProfileFunc()}
+                  className="rounded-full h-[35px] w-[35px]"
+                  src={profilePic}
+                  width={35}
+                  height={35}
+                  alt="Profile-Pic"
+                />
+                {toggleProfile && (
+                  <>
+                    <Link href="/profile">Go to Profile</Link>
+                    <button type="button" className="hover:underline hover:text-red-500" onClick={() => handleSignOut()}>
+                      Sign Out
+                    </button>
+                  </>
+                )}
+              </div>
+            </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => handleSignIn()}
+              className="w-36 rounded-3xl bg-indigo-500 hover:bg-indigo-800 border border-slate-200"
+            >
+              Sign In
+            </button>
+          )}
+        </nav>
+      
     </>
   );
 };

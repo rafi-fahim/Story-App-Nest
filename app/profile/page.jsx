@@ -1,15 +1,22 @@
 "use client";
 import { useState, useEffect } from "react"
-import ProfileCard from "@/components/ProfileCard";
 import { UserAuth } from "@/app/context/AuthContext";
+import ProfileCard from "@/components/ProfileCard";
 import StoryShowCard from "@/components/StoryShowCard";
 import image from "@/public/empty-profile.png";
+import Loading from "@/components/Loading";
 
 const page = () => {
   const { user } = UserAuth();
   const [profilePic, setProfilePic] = useState(image)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {  
+    const checkAuthenticaion = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 50))
+      setLoading(false)
+    }
+    checkAuthenticaion()
     if (user) {
       try{
         setProfilePic(user.photoURL)
@@ -62,16 +69,19 @@ const page = () => {
 
   return (
     <>
-      <div className="p-4">
-        {user && (
-          <>
-            <ProfileCard userName={user.displayName} userPic={profilePic}/>
-            <div className="flex flex-col items-center justify-center gap-4">
-              {storyCard}
-            </div>
-          </>
-        )}
-      </div>
+        <div className="p-4">
+          {loading? (<Loading />) : user ? (
+            <>
+              <ProfileCard userName={user.displayName} userPic={profilePic}/>
+              <div className="flex flex-col items-center justify-center gap-4">
+                {storyCard}
+              </div>
+            </>
+          )
+          :
+          (<p>You must be logged in to view this page!</p>)
+          }
+        </div>
     </>
   );
 };

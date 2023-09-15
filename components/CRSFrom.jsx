@@ -16,19 +16,14 @@ const CRSFrom = ({ userId }) => {
     time: "",
     uid: "",
   });
-  function hanldeStoryData(event) {
-    const { name, value } = event.target;
-    setStoryData((prevStorydata) => {
-      return {
-        ...prevStorydata,
-        [name]: value,
-      };
-    });
-  }
-  const handleStorySubmit = async (event) => {
-    event.preventDefault()
+  console.log(storyData);
+
+  const handleStorySubmit = async () => {
     try {
-      const docRef = await addDoc(collection(db, "stories"), storyData);
+      const docRef = await addDoc(collection(db, "stories"), {
+        ...storyData,
+        uid: userId
+      });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -43,13 +38,27 @@ const CRSFrom = ({ userId }) => {
             placeholder="Your Class"
             className="border w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
             name="class"
-            onChange={hanldeStoryData}
+            onChange={(e) => {
+              setStoryData((prev) => {
+                return {
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                };
+              });
+            }}
           />
           <div className="flex flec-col gap-1">
             <label htmlFor="section">Choose your section</label>
             <select
               className="bg-light-dark"
-              onChange={hanldeStoryData}
+              onChange={(e) => {
+                setStoryData((prev) => {
+                  return {
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  };
+                });
+              }}
               name="section"
               id="section"
             >
@@ -89,12 +98,25 @@ const CRSFrom = ({ userId }) => {
         <h1 className="text-center text-white text-2xl">
           Write your fabilous Story. 😀
         </h1>
-        <form onSubmit={() => handleStorySubmit()} className="flex items-center flex-col mt-4 gap-2 p-3">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleStorySubmit();
+          }}
+          className="flex items-center flex-col mt-4 gap-2 p-3"
+        >
           <motion.input
             type="text"
             placeholder="Your name"
             className="border w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
-            onChange={hanldeStoryData}
+            onChange={(e) => {
+              setStoryData((prev) => {
+                return {
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                };
+              });
+            }}
             name="name"
             whileTap={{ scale: 1.2 }}
           />
@@ -107,7 +129,14 @@ const CRSFrom = ({ userId }) => {
             </label>
             <select
               className="flex flec-col text-slate-100 rounded-sm bg-slate-900 gap-1 w-[230px]"
-              onChange={hanldeStoryData}
+              onChange={(e) => {
+                setStoryData((prev) => {
+                  return {
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  };
+                });
+              }}
               name="occupation"
               id="occupation"
             >
@@ -134,7 +163,14 @@ const CRSFrom = ({ userId }) => {
               placeholder="Your Class"
               className="border w-[230px] h-9 rounded-lg bg-light-dark p-1 border-green-400"
               name="class"
-              onChange={hanldeStoryData}
+              onChange={(e) => {
+                setStoryData((prev) => {
+                  return {
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  };
+                });
+              }}
             />
           )}
           {checkCpsc()}
@@ -144,12 +180,19 @@ const CRSFrom = ({ userId }) => {
             placeholder={`${storyData.name}${
               storyData.name ? ", " : ""
             }Write your story`}
-            onChange={hanldeStoryData}
+            onChange={(e) => {
+              setStoryData((prev) => {
+                return {
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                };
+              });
+            }}
           />
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.5 }}
-            type='submit'
+            type="submit"
             className="justify-items-center h-10 w-20 rounded hover:bg-emerald-950 hover:border-emerald-400 hover:border-2 bg-emerald-700 text-white "
           >
             Submit
