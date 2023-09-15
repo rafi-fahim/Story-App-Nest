@@ -4,8 +4,6 @@ import { UserAuth } from "@/app/context/AuthContext";
 import {
   query,
   where,
-  getDocs,
-  collection,
   onSnapshot,
 } from "firebase/firestore";
 import { db, storiesRef } from "../firebase";
