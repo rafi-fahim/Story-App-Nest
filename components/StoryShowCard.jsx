@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState , useEffect } from "react";
- 
+import { useState, useEffect } from "react";
+import { doc, getDoc, increment, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "@/app/firebase";
+
 const StoryShowCard = ({
   userPic,
   userName,
@@ -10,11 +12,28 @@ const StoryShowCard = ({
   userSection,
   userOccupation,
   userStory,
+  storyId,
   userId,
   userLikeCount,
   storyDate,
 }) => {
+  const [liked, isLiked] = useState(false);
+  const [favourite, isFavourite] = useState(false);
 
+  const handleLike = async () => {
+    isLiked(prev => !prev)
+    if (!liked)
+    {
+      await updateDoc(doc(db, "stories", storyId), {
+        likeCount: increment(1),
+      });
+    } else {
+      await updateDoc(doc(db, "stories", storyId), {
+        likeCount: increment(-1),
+      });
+    }
+    console.log("liked");
+  };
 
   return (
     <>
@@ -41,16 +60,22 @@ const StoryShowCard = ({
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="p-2 w-full h-full flex justify-center items-center hover:bg-slate-400"
+            className={`${
+              liked ? "bg-emerald-500" : " hover:bg-slate-400"
+            } p-2 w-full h-full flex justify-center items-center`}
             type="button"
+            onClick={() => handleLike()}
           >
             👍
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="p-2 w-full h-full flex justify-center items-center hover:bg-slate-400"
+            className={`p-2 w-full h-full flex justify-center items-center ${
+              favourite ? "bg-indigo-400" : "hover:bg-slate-400"
+            }`}
             type="button"
+            onClick={() => isFavourite((prev) => !prev)}
           >
             ⭐
           </motion.button>

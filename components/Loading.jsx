@@ -8,6 +8,7 @@ const Loading = () => {
             <Image
                 src={loader}
                 alt="Loading Please Wait...."
+                priority={true}
                 className="p-6"
             />
         </div>

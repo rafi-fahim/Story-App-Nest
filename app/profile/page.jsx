@@ -68,6 +68,7 @@ const page = () => {
                       userStory={perUser.storyText}
                       userLikeCount={perUser.likeCount}
                       storyDate={perUser.time}
+                      storyId={perUser.id}
                       userId={perUser.uid}
                       userPic={profilePic}
                       key={perUser.id}
