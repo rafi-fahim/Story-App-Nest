@@ -3,10 +3,9 @@ import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { collection, addDoc } from "firebase/firestore";
-
 import { db } from "@/app/firebase";
 
-const CRSFrom = ({ userId }) => {
+const CRSFrom = ({ user }) => {
   const [storyData, setStoryData] = useState({
     name: "",
     occupation: "",
@@ -16,8 +15,10 @@ const CRSFrom = ({ userId }) => {
     likeCount: 0,
     time: "",
     uid: "",
+    userPic: "",
   });
   console.log(storyData);
+  console.log(user);
 
   const handleStorySubmit = async () => {
     try {
@@ -33,7 +34,8 @@ const CRSFrom = ({ userId }) => {
       let dateTime = date + " " + time;
       const docRef = await addDoc(collection(db, "stories"), {
         ...storyData,
-        uid: userId,
+        uid: user.uid,
+        userPic: user.photoURL,
         time: dateTime
       });
       console.log("Document written with ID: ", docRef.id);

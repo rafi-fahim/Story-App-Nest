@@ -4,7 +4,7 @@ import { useState , useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import Loading from "@/components/Loading";
 
-const page = () => {
+const CreateStory = () => {
   const { user } = UserAuth();
   const [loading, setLoading] = useState(true);
 
@@ -22,7 +22,7 @@ const page = () => {
         {loading ? (
           <Loading />
         ) : user ? (
-          <CRSFrom userId={user.uid} />
+          <CRSFrom  user={user} />
         ) : (
           <p className="text-center text-red-500">
             You have to logged in --- restricted page
@@ -33,4 +33,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CreateStory;

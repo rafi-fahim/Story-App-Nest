@@ -6,7 +6,7 @@ import {
   where,
   onSnapshot,
 } from "firebase/firestore";
-import { db, storiesRef } from "../firebase";
+import { storiesRef } from "../firebase";
 import ProfileCard from "@/components/ProfileCard";
 import StoryShowCard from "@/components/StoryShowCard";
 import image from "@/public/empty-profile.png";
@@ -15,8 +15,9 @@ import Loading from "@/components/Loading";
 const page = () => {
   const { user } = UserAuth();
   const [profilePic, setProfilePic] = useState(image);
-  const [loading, setLoading] = useState(true);
   const [userStories, setUserStories] = useState(null);
+  const [storyCount, setStoryCount] = useState(0)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkAuthenticaion = async () => {
@@ -43,6 +44,7 @@ const page = () => {
           stories.push({ ...doc.data(), id: doc.id });
         });
         setUserStories(stories);
+        setStoryCount(stories.length + 1)
         console.log(stories);
       });
     }
@@ -55,9 +57,9 @@ const page = () => {
           <Loading />
         ) : user ? (
           <>
-            <ProfileCard userName={user.displayName} userPic={profilePic} />
+            <ProfileCard userName={user.displayName} storyCount={storyCount} userPic={profilePic} />
             <div className="flex flex-col items-center justify-center gap-4">
-              {userStories &&
+              {userStories && 
                 userStories.map((perUser) => {
                   return (
                     <StoryShowCard

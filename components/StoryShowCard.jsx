@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { doc, getDoc, increment, setDoc, updateDoc } from "firebase/firestore";
+import menuIcon from "@/public/menu.svg";
 import { db } from "@/app/firebase";
 
 const StoryShowCard = ({
@@ -19,11 +20,11 @@ const StoryShowCard = ({
 }) => {
   const [liked, isLiked] = useState(false);
   const [favourite, isFavourite] = useState(false);
+  const [menu, setMenu] = useState(false)
 
   const handleLike = async () => {
-    isLiked(prev => !prev)
-    if (!liked)
-    {
+    isLiked((prev) => !prev);
+    if (!liked) {
       await updateDoc(doc(db, "stories", storyId), {
         likeCount: increment(1),
       });
@@ -47,12 +48,17 @@ const StoryShowCard = ({
             width={35}
           />
           <h1>{userName}</h1>
+          {/* <Image
+            src={menuIcon}
+            alt="Menu-Icon"
+            className="p-2 hover:cursor-pointer self-end h-[40px] w-[40px]"
+          /> */}
         </div>
         <div className="p-2 flex flex-col">
           <div className="flex items-center gap-2">
-            <p>{userOccupation}</p>
-            <p>| {userClass && userClass}</p>
-            <p>| {userSection && userSection}</p>
+            <p className="uppercase text-violet-900">{userOccupation}</p>
+            <p className="uppercase text-violet-900">| {userClass && userClass}</p>
+            <p className="uppercase text-violet-900">| {userSection && userSection}</p>
           </div>
           <p>{userStory}</p>
         </div>
