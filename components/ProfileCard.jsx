@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 
-const ProfileCard = ({ userName, userPic, storyCount }) => {
+const ProfileCard = ({ userName, userPic, storyCount , totaLike }) => {
   return (
     <div className="flex flex-col gap-3 p-4 bg-white rounded-md mb-6">
-      <div className="flex gap-1">
+      <div className="flex items-center gap-1">
         <Image
           src={userPic}
           height={40}
@@ -31,10 +31,10 @@ const ProfileCard = ({ userName, userPic, storyCount }) => {
             </span>
           </div>
           <div className="p-2 bg-slate-300 rounded-lg w-32 h-20 text-center">
-            Liked
+            Likes
             <br />
             <span className="font-bold text-3xl text-violet-700 font-mono ">
-              24
+              {totaLike}
             </span>
           </div>
         </div>

@@ -1,11 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { UserAuth } from "@/app/context/AuthContext";
-import {
-  query,
-  where,
-  onSnapshot,
-} from "firebase/firestore";
+import { query, where, onSnapshot } from "firebase/firestore";
 import { storiesRef } from "../firebase";
 import ProfileCard from "@/components/ProfileCard";
 import StoryShowCard from "@/components/StoryShowCard";
@@ -16,7 +12,8 @@ const page = () => {
   const { user } = UserAuth();
   const [profilePic, setProfilePic] = useState(image);
   const [userStories, setUserStories] = useState(null);
-  const [storyCount, setStoryCount] = useState(0)
+  const [storyCount, setStoryCount] = useState(0);
+  const [totalLikes, setTotalLikes] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,11 +41,21 @@ const page = () => {
           stories.push({ ...doc.data(), id: doc.id });
         });
         setUserStories(stories);
-        setStoryCount(stories.length + 1)
+        setStoryCount(stories.length);
         console.log(stories);
       });
     }
   }, [user]);
+
+  // useEffect(() => {
+  //   let likeCounting = 0;
+  //   if (userStories) {
+  //     for (let i = 0; userStories.length > i; i++) {
+  //       likeCounting = i + userStories.likeCount;
+  //     }
+  //     setTotalLikes(likeCounting);
+  //   }
+  // }, [userStories]);
 
   return (
     <>
@@ -57,9 +64,14 @@ const page = () => {
           <Loading />
         ) : user ? (
           <>
-            <ProfileCard userName={user.displayName} storyCount={storyCount} userPic={profilePic} />
+            <ProfileCard
+              totaLike={totalLikes}
+              userName={user.displayName}
+              storyCount={storyCount}
+              userPic={profilePic}
+            />
             <div className="flex flex-col items-center justify-center gap-4">
-              {userStories && 
+              {userStories &&
                 userStories.map((perUser) => {
                   return (
                     <StoryShowCard

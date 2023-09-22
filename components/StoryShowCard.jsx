@@ -6,6 +6,7 @@ import { useState } from "react";
 import { doc, increment, updateDoc } from "firebase/firestore";
 import menuIcon from "@/public/menu.svg";
 import { db } from "@/app/firebase";
+import StoryCardMenu from "./StoryCardMenu";
 
 const StoryShowCard = ({
   userPic,
@@ -22,7 +23,7 @@ const StoryShowCard = ({
 }) => {
   const [liked, isLiked] = useState(false);
   const [favourite, isFavourite] = useState(false);
-  const [menu, setMenu] = useState(false)
+  const [menu, setMenu] = useState(false);
 
   const handleLike = async () => {
     isLiked((prev) => !prev);
@@ -53,18 +54,27 @@ const StoryShowCard = ({
             <h1 className="font-semibold">{userName}</h1>
           </div>
           <motion.div className="p-2 h-[40px] w-[40px]">
-            <Image
-              src={menuIcon}
-              alt="Menu-Icon"
-              className="hover:cursor-pointer h-full w-full"
-            />
+            {!menu ? (
+              <Image
+                src={menuIcon}
+                alt="Menu-Icon"
+                className="hover:cursor-pointer h-full w-full"
+                onClick={() => setMenu((prev) => !prev)}
+              />
+            ) : (
+              <StoryCardMenu storyId={storyId} postUserId={userId} />
+            )}
           </motion.div>
         </div>
         <div className="p-2 flex flex-col">
           <div className="flex items-center gap-1">
             <p className="uppercase text-violet-900">{userOccupation}</p>
-            {userClass && <p className="uppercase text-violet-900">| {userClass}</p>}
-            {userSection && <p className="uppercase text-violet-900">| {userSection}</p>}
+            {userClass && (
+              <p className="uppercase text-violet-900">| {userClass}</p>
+            )}
+            {userSection && (
+              <p className="uppercase text-violet-900">| {userSection}</p>
+            )}
           </div>
           <p className="text-sm text-slate-400">{storyTime}</p>
           <p className="text-justify">{userStory}</p>
