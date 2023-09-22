@@ -40,7 +40,7 @@ const StoryShowCard = ({
 
   return (
     <>
-      <div className="max-w-sm min-w-[20rem] bg-slate-200 border border-slate-400 rounded-sm">
+      <div className="max-w-sm min-w-[20rem] bg-white border border-slate-400 rounded-sm">
         <div className="p-2 flex justify-between gap-2">
           <div className="flex gap-2 justify-center items-center">
             <Image
@@ -69,12 +69,12 @@ const StoryShowCard = ({
           <p className="text-sm text-slate-400">{storyTime}</p>
           <p className="text-justify">{userStory}</p>
         </div>
-        <div className="flex justify-between items-center h-9 border bg-slate-300">
+        <div className="flex justify-between items-center h-9 border bg-amber-400">
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
             className={`${
-              liked ? "bg-emerald-500" : " hover:bg-slate-400"
+              liked ? "bg-emerald-500" : " hover:bg-amber-600"
             } p-2 w-full h-full flex justify-center items-center`}
             type="button"
             onClick={() => handleLike()}
@@ -85,7 +85,7 @@ const StoryShowCard = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
             className={`p-2 w-full h-full flex justify-center items-center ${
-              favourite ? "bg-indigo-400" : "hover:bg-slate-400"
+              favourite ? "bg-indigo-400" : "hover:bg-amber-600"
             }`}
             type="button"
             onClick={() => isFavourite((prev) => !prev)}

@@ -52,7 +52,7 @@ const page = () => {
 
   return (
     <>
-      <div className="p-4">
+      <div className="p-4 bg-slate-200">
         {loading ? (
           <Loading />
         ) : user ? (

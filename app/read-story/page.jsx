@@ -16,7 +16,7 @@ const ReadStory = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center w-full">
+      <div className="flex bg-slate-200 justify-center items-center w-full">
         {loading ? (
           <Loading />
         ) : (
