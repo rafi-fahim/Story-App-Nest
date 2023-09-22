@@ -1,31 +1,32 @@
-import { storiesRef } from "@/app/firebase";
+import { storiesRef, allStories } from "@/app/firebase";
 import { useState, useEffect } from "react";
 import { onSnapshot } from "firebase/firestore";
 import image from "@/public/empty-profile.png";
 import StoryShowCard from "./StoryShowCard";
 
 const ShowStoryAll = () => {
+
   const [stories, setStories] = useState(null);
 
   useEffect(() => {
-    onSnapshot(storiesRef, (snapshot) => {
-      let stories = [];
+    let story = []
+     onSnapshot(storiesRef, (snapshot) => {
       snapshot.docs.forEach((doc) => {
-        stories.push({ ...doc.data(), id: doc.id });
+        story.push({ ...doc.data(), id: doc.id });
       });
-      setStories(stories);
-      console.log(stories);
-    });
-  }, []);
+    })
+    setStories(story)
+  }, [])
+
   return (
     <>
       <div className="p-4">
-          <div className="flex flex-col justify-center  gap-4 w-full">
-            <h1>Here are the legendary stories</h1>
+          <div className="flex flex-col justify-center items-center p-2 gap-4 w-full">
+            <h1 className="p-4 font-bold text-emerald-800 lg:text-6xl bg-amber-300 border rounded-lg sm:text-3xl text-center">Here are the legendary stories</h1>
               {stories &&
                 stories.map((perUser) => {
                   return (
-                    <StoryShowCard
+                  <StoryShowCard
                       userName={perUser.name}
                       userOccupation={perUser.occupation}
                       userClass={perUser.class}
@@ -34,6 +35,7 @@ const ShowStoryAll = () => {
                       userLikeCount={perUser.likeCount}
                       storyDate={perUser.time}
                       storyId={perUser.id}
+                      storyTime={perUser.time}
                       userId={perUser.uid}
                       userPic={perUser.userPic ? perUser.userPic : image}
                       key={perUser.id}
