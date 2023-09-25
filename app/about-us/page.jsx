@@ -6,33 +6,33 @@ const AboutPage = () => {
     {
       title: "whoami",
       paragraph:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique temporibus necessitatibus voluptatibus ullam est? Atque eveniet vero illum beatae? Reprehenderit eos eligendi porro voluptate maxime quod nisi deserunt nam laudantium?",
+          "The creator is called Fahim Shakil Rafi. He like to call FSR in short",
+      position: "left",
     },
     {
       title: "cd education",
       paragraph:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique temporibus necessitatibus voluptatibus ullam est? Atque eveniet vero illum beatae? Reprehenderit eos eligendi porro voluptate maxime quod nisi deserunt nam laudantium?",
+        "This boy hasn't passed high school yet. Currently he is studing in Cantonment Public School & College, Saidpur",
+      position: "right",
     },
     {
       title: "cd techstack",
       paragraph:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique temporibus necessitatibus voluptatibus ullam est? Atque eveniet vero illum beatae? Reprehenderit eos eligendi porro voluptate maxime quod nisi deserunt nam laudantium?",
+        "The technologies he knows: HTML, CSS, Java Script, Tailwind Css, React, NeXt.js",
+      position: "left",
     },
   ];
 
   const renderAboutCreator = aboutDes.map((info) => {
-    return (
-        <AboutCreator 
-            title={info.title}
-            paragrapgh={info.paragraph}
-        />
-    );
+    return <AboutCreator position={info.position} title={info.title} paragrapgh={info.paragraph} />;
   });
 
   return (
     <>
-      <h1>Meet the Creator</h1>
-      {renderAboutCreator}
+      <div className="p-4 flex flex-col justify-center items-center gap-3 w-full">
+        <h1 className="p-4 text-left lg:w-auto md:w-auto w-10/12 bg-slate-800 text-green-500 font-thin text-2xl rounded-md "><span className="font-bold">root~$</span> Meet the Creator</h1>
+        {renderAboutCreator}
+      </div>
     </>
   );
 };

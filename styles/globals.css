@@ -10,3 +10,6 @@
     width: clamp(50%, 700px, 90%);
     height: min(50%, 300px);
 }
+.about-card-w{
+    width: clamp(20% , 400px, 90%);
+}
