@@ -6,7 +6,7 @@ const AboutPage = () => {
     {
       title: "whoami",
       paragraph:
-          "The creator is called Fahim Shakil Rafi. He like to call FSR in short",
+          "The creator is called Fahim Shakil Rafi. He likes to call him FSR in short",
       position: "left",
     },
     {
@@ -18,7 +18,7 @@ const AboutPage = () => {
     {
       title: "cd techstack",
       paragraph:
-        "The technologies he knows: HTML, CSS, Java Script, Tailwind Css, React, NeXt.js",
+        "Technology Sandwitch: HTML, CSS, Java Script, Tailwind Css, React, NeXt.js",
       position: "left",
     },
   ];

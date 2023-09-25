@@ -47,7 +47,7 @@ const Navbar = () => {
     <>
       <nav className="flex justify-between p-4 h-16 text-center bg-stone-800 text-white items-center">
         {/* PC Menu */}
-        <div className="sm:block none flex justify-center items-center gap-2">
+        <div className="lg:hidden flex justify-center items-center gap-2">
           <Link className="hover:underline mr-3" href="/">
             Home
           </Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
         <motion.button
           whileTap={{ scale: 1.3 }}
           type="button"
-          className={`${!toggleProfile ? "block" : "none"} text-emerald-300 none max-sm:block `}
+          className={`${!toggleProfile ? "block" : "hidden"} text-emerald-300 hidden max-sm:block `}
           onClick={() => setToogleMenu((prev) => !prev)}
         >
           Menu
