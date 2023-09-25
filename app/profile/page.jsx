@@ -47,16 +47,6 @@ const page = () => {
     }
   }, [user]);
 
-  // useEffect(() => {
-  //   let likeCounting = 0;
-  //   if (userStories) {
-  //     for (let i = 0; userStories.length > i; i++) {
-  //       likeCounting = i + userStories.likeCount;
-  //     }
-  //     setTotalLikes(likeCounting);
-  //   }
-  // }, [userStories]);
-
   return (
     <>
       <div className="p-4 bg-slate-200">
@@ -81,7 +71,7 @@ const page = () => {
                       userSection={perUser.section}
                       userStory={perUser.storyText}
                       userLikeCount={perUser.likeCount}
-                      storyDate={perUser.time}
+                      storyTime={perUser.time}
                       storyId={perUser.id}
                       userId={perUser.uid}
                       userPic={profilePic}

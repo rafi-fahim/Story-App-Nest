@@ -3,12 +3,10 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Noto+Emoji&family=Permanent+Marker&family=Ysabeau&display=swap');
 
-.none {
-    display: none;
+.bg-transparent-slate{
+    background: rgba(189, 189, 189, 0.397)
 }
-.absolute-center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% , -50%);
+.modal-hw{
+    width: clamp(50%, 700px, 90%);
+    height: min(50%, 300px);
 }

@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { doc, increment, updateDoc } from "firebase/firestore";
+import { doc, increment, updateDoc, deleteDoc } from "firebase/firestore";
 import menuIcon from "@/public/menu.svg";
 import { db } from "@/app/firebase";
 import StoryCardMenu from "./StoryCardMenu";
+import RUSureModal from "./RUSureModal";
 
 const StoryShowCard = ({
   userPic,
@@ -24,6 +25,16 @@ const StoryShowCard = ({
   const [liked, isLiked] = useState(false);
   const [favourite, isFavourite] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [dialogueBox, setDialogueBox] = useState(false);
+
+  const modalOpen = () => setDialogueBox(true);
+  const modalClose = () => setDialogueBox(false);
+
+  const deleteStory = () => {
+    deleteDoc(doc(db, "stories", storyId));
+    modalClose()
+    console.log("story Deleted successfully");
+  };
 
   const handleLike = async () => {
     isLiked((prev) => !prev);
@@ -53,7 +64,7 @@ const StoryShowCard = ({
             />
             <h1 className="font-semibold">{userName}</h1>
           </div>
-          <motion.div className="p-2 h-[40px] w-[40px]">
+          <motion.div className="relative p-2 h-[40px] w-[40px]">
             {!menu ? (
               <Image
                 src={menuIcon}
@@ -62,7 +73,12 @@ const StoryShowCard = ({
                 onClick={() => setMenu((prev) => !prev)}
               />
             ) : (
-              <StoryCardMenu storyId={storyId} postUserId={userId} />
+              <StoryCardMenu
+                modalOpen={modalOpen}
+                setMenu={setMenu}
+                storyId={storyId}
+                postUserId={userId}
+              />
             )}
           </motion.div>
         </div>
@@ -79,12 +95,12 @@ const StoryShowCard = ({
           <p className="text-sm text-slate-400">{storyTime}</p>
           <p className="text-justify">{userStory}</p>
         </div>
-        <div className="flex justify-between items-center h-9 border bg-amber-400">
+        <div className="flex justify-between items-center h-9 border bg-violet-300">
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
             className={`${
-              liked ? "bg-emerald-500" : " hover:bg-amber-600"
+              liked ? "bg-emerald-500" : " hover:bg-violet-400"
             } p-2 w-full h-full flex justify-center items-center`}
             type="button"
             onClick={() => handleLike()}
@@ -95,7 +111,7 @@ const StoryShowCard = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
             className={`p-2 w-full h-full flex justify-center items-center ${
-              favourite ? "bg-indigo-400" : "hover:bg-amber-600"
+              favourite ? "bg-indigo-400" : "hover:bg-violet-400"
             }`}
             type="button"
             onClick={() => isFavourite((prev) => !prev)}
@@ -103,6 +119,9 @@ const StoryShowCard = ({
             ⭐
           </motion.button>
         </div>
+        {dialogueBox && (
+          <RUSureModal handleDelete={deleteStory} handleClose={modalClose} storyId={storyId} />
+        )}
       </div>
     </>
   );

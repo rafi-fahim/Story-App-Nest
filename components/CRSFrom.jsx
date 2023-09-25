@@ -39,6 +39,10 @@ const CRSFrom = ({ user }) => {
         time: dateTime
       });
       console.log("Document written with ID: ", docRef.id);
+      if(alert("Your story has been submitted successfully 😀")) {}
+      else {
+        window.location.reload()
+      }
     } catch (e) {
       console.error("Error adding document: ", e);
     }
