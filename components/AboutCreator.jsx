@@ -18,7 +18,7 @@ const AboutCreator = () => {
     },
     {
       command: "cat FSR_Contact",
-      reply: [`mail: fsrafisocial18@gmail.com \n github: github.com/fahim-shakil \n facebook: could not find the adress😶`],
+      reply: [`mail: fsrafisocial18@gmail.com \n github: github.com/rafi-fahim \n facebook: could not find the adress😶`],
     },
   ];
   return (
