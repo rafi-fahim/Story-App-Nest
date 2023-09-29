@@ -20,7 +20,6 @@ const StoryShowCard = ({
   storyTime,
   userId,
   userLikeCount,
-  storyDate,
 }) => {
   const [liked, isLiked] = useState(false);
   const [favourite, isFavourite] = useState(false);
@@ -78,9 +77,12 @@ const StoryShowCard = ({
                 setMenu={setMenu}
                 storyId={storyId}
                 postUserId={userId}
-              />
-            )}
+                />
+                )}
           </motion.div>
+          {dialogueBox && (
+            <RUSureModal handleDelete={deleteStory} handleClose={modalClose} storyId={storyId} />
+          )}
         </div>
         <div className="p-2 flex flex-col">
           <div className="flex items-center gap-1">
@@ -119,9 +121,6 @@ const StoryShowCard = ({
             ⭐
           </motion.button>
         </div>
-        {dialogueBox && (
-          <RUSureModal handleDelete={deleteStory} handleClose={modalClose} storyId={storyId} />
-        )}
       </div>
     </>
   );

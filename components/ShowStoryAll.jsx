@@ -1,4 +1,4 @@
-import { storiesRef, allStories } from "@/app/firebase";
+import { storiesRef } from "@/app/firebase";
 import { useEffect, useState } from "react";
 import { onSnapshot } from "firebase/firestore";
 import image from "@/public/empty-profile.png";
@@ -33,7 +33,6 @@ const ShowStoryAll = () => {
                   userSection={perUser.section}
                   userStory={perUser.storyText}
                   userLikeCount={perUser.likeCount}
-                  storyDate={perUser.time}
                   storyId={perUser.id}
                   storyTime={perUser.time}
                   userId={perUser.uid}

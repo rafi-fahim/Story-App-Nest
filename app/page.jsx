@@ -1,4 +1,5 @@
 import LandingArea from '@/components/LandingArea'
+import UnderDevelopmentBox from '@/components/UnderDevelopmentBox'
 import Why from '@/components/Why'
 
 const HomePage = () => {
@@ -6,6 +7,7 @@ const HomePage = () => {
     <>
       <LandingArea />
       <Why />
+      <UnderDevelopmentBox />
     </>
   )
 }

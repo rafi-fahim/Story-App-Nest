@@ -8,7 +8,7 @@ const StoryCardMenu = ({ modalOpen, setMenu, postUserId }) => {
 
   return (
     <motion.div
-      className="absolute flex flex-col w-36 bg-slate-100 border-slate-500  rounded-md"
+      className="absolute flex flex-col w-36 bg-slate-100 border-slate-500 max-sm:-left-20 rounded-md"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1, rotate: 360 }}
     >

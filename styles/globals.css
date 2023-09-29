@@ -11,5 +11,9 @@
     height: min(50%, 300px);
 }
 .about-card-w{
-    width: clamp(20% , 400px, 90%);
+    width: clamp(20% , 900px, 98%);
+}
+.none {
+    display: none;
+    /* background-color: #2ff1ff; */
 }

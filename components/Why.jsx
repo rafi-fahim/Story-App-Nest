@@ -17,7 +17,7 @@ const Why = () => {
     },
     {
       key: 3,
-      title: "To ?s",
+      title: "To Enjoy",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est fuga veritatis delectus! Vero explicabo rem fuga, suscipit aliquid quo quam dolorum temporibus odio dolores aperiam nihil laborum, quae nemo voluptate.",
     },

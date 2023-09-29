@@ -1,25 +1,32 @@
-"use client"
+"use client";
 import React from "react";
-import { TypeAnimation } from "react-type-animation";
+import AboutCLIPrompts from "./AboutCLIPrompts";
 
-const AboutCreator = ({ position, title, paragrapgh }) => {
+const AboutCreator = () => {
+  const commandReply = [
+    {
+      command: "whoami",
+      reply: ["Fahim Shakil"],
+    },
+    {
+      command: "nmap www.fahimshakil.com/education",
+      reply: ["Cantonment Public School & College, Saidpur"],
+    },
+    {
+      command: "nmap www.fahimshakil.com/techstack",
+      reply: ["HTML, CSS, Javascript, React.js, Tailwind CSS, Next.js, Firebase"],
+    },
+    {
+      command: "cat FSR_Contact",
+      reply: [`mail: fsrafisocial18@gmail.com \n github: github.com/fahim-shakil \n facebook: could not find the adress😶`],
+    },
+  ];
   return (
     <>
       <div
-        className={`${
-          position === "left"
-            ? "md:translate-x-2/4 lg:translate-x-2/4"
-            : "md:-translate-x-2/4 lg:-translate-x-2/4"
-        } p-2 bg-slate-800 rounded-lg about-card-w h-60 text-green-500`}
+        className={`p-2 bg-slate-800 rounded-lg about-card-w  text-green-500`}
       >
-        <h1 className="flex items-center font-thin ">
-          <span className="font-bold">root:~$</span>
-          {title}
-        </h1>
-        <TypeAnimation 
-          sequence={[paragrapgh]}
-          speed={50}
-        />
+        {commandReply.map(item => <AboutCLIPrompts command={item.command} reply={item.reply} key={item.command}/>)}
       </div>
     </>
   );
