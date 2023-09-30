@@ -19,6 +19,7 @@ const StoryShowCard = ({
   storyId,
   storyTime,
   userId,
+  edited,
   userLikeCount,
 }) => {
   const [liked, isLiked] = useState(false);
@@ -96,6 +97,7 @@ const StoryShowCard = ({
           </div>
           <p className="text-sm text-slate-400">{storyTime}</p>
           <p className="text-justify">{userStory}</p>
+          {edited &&<div className="flex justify-end"><p className="text-sm font-light bg-emerald-900 text-white p-[6px] border rounded-lg">Edited</p></div>}
         </div>
         <div className="flex justify-between items-center h-9 border bg-violet-300">
           <motion.button

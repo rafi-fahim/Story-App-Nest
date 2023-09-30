@@ -75,6 +75,7 @@ const page = () => {
                       storyId={perUser.id}
                       userId={perUser.uid}
                       userPic={profilePic}
+                      edited={perUser.edited ? perUser.edited : false }
                       key={perUser.id}
                     />
                   );

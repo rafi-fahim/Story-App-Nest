@@ -16,6 +16,7 @@ const CRSFrom = ({ user }) => {
     time: "",
     uid: "",
     userPic: "",
+    edited: false,
   });
   console.log(storyData);
   console.log(user);
@@ -113,7 +114,7 @@ const CRSFrom = ({ user }) => {
   return (
     <>
       <motion.div 
-          className="center shadow-lg shadow-indigo-500 p-4 w-[600px] h-[400px] border border-slate-950 rounded-xl bg-[#4568E4] "
+          className="shadow-lg shadow-indigo-500 p-4 w-[600px] h-[400px] border border-slate-950 rounded-xl bg-[#4568E4] "
           initial={{ scale:0 }}
           animate={{ scale:1 }}
         >

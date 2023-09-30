@@ -15,7 +15,8 @@ const ShowStoryAll = () => {
       setStories(story);
     });
   }, [])
-
+  
+  console.log(stories);
   return (
     <>
       <div className="p-4">
@@ -37,6 +38,7 @@ const ShowStoryAll = () => {
                   storyTime={perUser.time}
                   userId={perUser.uid}
                   userPic={perUser.userPic ? perUser.userPic : image}
+                  edited={perUser.edited ? perUser.edited : false }
                   key={perUser.id}
                 />
               );

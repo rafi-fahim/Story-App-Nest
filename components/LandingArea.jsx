@@ -25,7 +25,7 @@ const LandingArea = () => {
               />
         </div>
         {!user && <p className="text-xl text-slate-700">Tip: Login to gain full access</p>}
-        {user && <p className="text-xl text-slate-700">Tip: Click on your profile photo at the top left corner to see magic</p>}
+        {user && <p className="text-xl text-slate-700">Tip: Click on your profile photo at the top right corner to see magic</p>}
       </div>
     </>
   );
