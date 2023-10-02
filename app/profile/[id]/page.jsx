@@ -51,7 +51,7 @@ const page = ({ params }) => {
         !storyEdited ? (
           <div className="flex flex-col gap-2 justify-center items-center p-4 w-full">
             <form
-              className="shadow-lg flex relative justify-center items-center flex-col gap-2 shadow-indigo-500 p-4 w-[600px] border border-slate-950 rounded-xl bg-[#4568E4]"
+              className="shadow-lg flex relative justify-center items-center flex-col gap-2 shadow-indigo-500 p-4 edit-card-w border border-slate-950 rounded-xl bg-[#4568E4]"
               onSubmit={(e) => {
                 e.preventDefault();
                 handleUpdate();

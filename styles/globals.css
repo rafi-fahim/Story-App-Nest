@@ -13,6 +13,9 @@
 .about-card-w{
     width: clamp(20% , 900px, 98%);
 }
+.edit-card-w {
+    width: clamp(20%, 1000px, 99%);
+}
 .none {
     display: none;
     /* background-color: #2ff1ff; */
