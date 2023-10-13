@@ -1,13 +1,23 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { doc, increment, updateDoc, deleteDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import {
+  doc,
+  increment,
+  updateDoc,
+  deleteDoc,
+  setDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import menuIcon from "@/public/menu.svg";
 import { db } from "@/app/firebase";
 import StoryCardMenu from "./StoryCardMenu";
 import RUSureModal from "./RUSureModal";
+import { UserAuth } from "@/app/context/AuthContext";
 
 const StoryShowCard = ({
   userPic,
@@ -26,13 +36,48 @@ const StoryShowCard = ({
   const [favourite, isFavourite] = useState(false);
   const [menu, setMenu] = useState(false);
   const [dialogueBox, setDialogueBox] = useState(false);
+  const [userDoc, setUserDoc] = useState(null);
 
-  const modalOpen = () => setDialogueBox(true);
+  const { user } = UserAuth();
+
+  const modalOpen = () => setDialogueBox(true); 
   const modalClose = () => setDialogueBox(false);
+
+  const userRef = query(collection(db, "users", `${user.uid}`, "favourites"), where("isFavourite", "==" , true))
+  const docRef = doc(db, "users", `${user.uid}`, "favourites", `${storyId}`);
+
+  useEffect(() => {
+    let users = [];
+    const querySnapshot = getDocs(userRef);
+    querySnapshot.then((data) => {
+      data.forEach((doc) => {
+        users.push({ ...doc.data(), id: doc.id });
+      });
+      setUserDoc(users);
+      
+    });
+  }, []);
+
+  useEffect(() => {
+    if (userDoc) {
+      userDoc.forEach((element) => {
+          isFavourite(element.isFavourite);
+      });
+    }
+  }, [userDoc]);
+
+  const handleFavourite = () => {
+    if (user) {
+      isFavourite((prev) => !prev);
+      setDoc(docRef, {
+        isFavourite: !favourite,
+      });
+    }
+  };
 
   const deleteStory = () => {
     deleteDoc(doc(db, "stories", storyId));
-    modalClose()
+    modalClose();
     console.log("story Deleted successfully");
   };
 
@@ -78,11 +123,15 @@ const StoryShowCard = ({
                 setMenu={setMenu}
                 storyId={storyId}
                 postUserId={userId}
-                />
-                )}
+              />
+            )}
           </motion.div>
           {dialogueBox && (
-            <RUSureModal handleDelete={deleteStory} handleClose={modalClose} storyId={storyId} />
+            <RUSureModal
+              handleDelete={deleteStory}
+              handleClose={modalClose}
+              storyId={storyId}
+            />
           )}
         </div>
         <div className="p-2 flex flex-col">
@@ -97,7 +146,13 @@ const StoryShowCard = ({
           </div>
           <p className="text-sm text-slate-400">{storyTime}</p>
           <p className="text-justify">{userStory}</p>
-          {edited &&<div className="flex justify-end"><p className="text-sm font-light bg-emerald-900 text-white p-[6px] border rounded-lg">Edited</p></div>}
+          {edited && (
+            <div className="flex justify-end">
+              <p className="text-sm font-light bg-emerald-900 text-white p-[6px] border rounded-lg">
+                Edited
+              </p>
+            </div>
+          )}
         </div>
         <div className="flex justify-between items-center h-9 border bg-violet-300">
           <motion.button
@@ -115,10 +170,12 @@ const StoryShowCard = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
             className={`p-2 w-full h-full flex justify-center items-center ${
-              favourite ? "bg-indigo-400" : "hover:bg-violet-400"
+              favourite ? "bg-emerald-600" : "hover:bg-violet-400"
             }`}
             type="button"
-            onClick={() => isFavourite((prev) => !prev)}
+            onClick={() => {
+              handleFavourite();
+            }}
           >
             ⭐
           </motion.button>

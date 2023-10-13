@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link"
+import { motion } from "framer-motion";
 
 const ProfileCard = ({ userName, userPic, storyCount , totaLike }) => {
   return (
@@ -23,14 +25,16 @@ const ProfileCard = ({ userName, userPic, storyCount , totaLike }) => {
                 {storyCount}
               </span>
             </div>
-            <div className="p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
-              Favoutires
-              <br />
-              <span className="font-bold text-3xl text-green-700 font-mono ">
-                24
-              </span>
-            </div>
-            <div className="p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
+            <Link href="/profile/favourites">
+            <div className="fav-card hover:bg-slate-600 transition-all hover:-translate-y-3 hover:text-white p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
+                Favoutires
+                <br />
+                <span className="font-bold text-3xl text-green-700 font-mono ">
+                  24
+                </span>
+              </div>
+            </Link>
+            <div className="fav-card hover:bg-slate-600 transition-all hover:-translate-y-3 hover:text-white hover:cursor-not-allowed p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
               Likes
               <br />
               <span className="font-bold text-3xl text-violet-700 font-mono ">

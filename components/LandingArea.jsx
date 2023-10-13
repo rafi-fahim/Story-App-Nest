@@ -7,7 +7,7 @@ const LandingArea = () => {
   const { user } = UserAuth();
   return (
     <>
-      <div className="flex text-left flex-col justify-center gap-2 p-4 align-middle h-screen w-full bg-gradient-to-bl from-cyan-300 via-indigo-300 to-violet-300">
+      <div className="flex text-left flex-col justify-center gap-2 p-4 align-middle h-screen w-full landing-bg">
         <div className="flex flex-col justify-left align-middle">
           <h1 className="text-blue-800 lg:text-6xl text-3xl font-semibold">
             Welcome to FSR Stories <br />

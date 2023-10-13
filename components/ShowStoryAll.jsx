@@ -16,7 +16,6 @@ const ShowStoryAll = () => {
     });
   }, [])
   
-  console.log(stories);
   return (
     <>
       <div className="p-4">
@@ -24,7 +23,7 @@ const ShowStoryAll = () => {
           <div className="p-4 font-bold text-emerald-800 lg:text-6xl bg-amber-300 border rounded-lg w-full text-3xl text-center">
             Here are the <br className="lg:hidden" /><span className="text-indigo-400 uppercase">legendary stories</span>
           </div>
-          {stories &&
+          {stories ?
             stories.map((perUser) => {
               return (
                 <StoryShowCard
@@ -42,7 +41,9 @@ const ShowStoryAll = () => {
                   key={perUser.id}
                 />
               );
-            })}
+            }): (
+              <div className="center text-3xl max-sm:text-xl font-semibold text-slate-950">There are no stories to show 😥. Nobody likes this app😭</div>
+            )}
         </div>
       </div>
     </>

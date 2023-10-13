@@ -20,3 +20,9 @@
     display: none;
     /* background-color: #2ff1ff; */
 }
+.landing-bg{
+    background: linear-gradient( to bottom, hsl(0, 100%, 75%),hsl(50, 100%, 75%),hsl(100, 100%, 75%), hsl(150, 100%, 75%), hsl(200, 100%, 75%),hsl(250, 100%, 75%),hsl(300, 100%, 75%),hsl(350, 100%, 75%));
+}
+.fav-card:hover > span {
+    @apply text-green-400
+}
