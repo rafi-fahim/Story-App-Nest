@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link"
 import { motion } from "framer-motion";
 
-const ProfileCard = ({ userName, userPic, storyCount , totaLike }) => {
+const ProfileCard = ({ userName, userPic, storyCount , totaLike, totalFavs }) => {
   return (
     <div className="flex justify-center">
       <div className="flex flex-col gap-3 p-4 w-full md:w-3/6 lg:w-3/6 bg-white rounded-md mb-6">
@@ -30,7 +30,7 @@ const ProfileCard = ({ userName, userPic, storyCount , totaLike }) => {
                 Favoutires
                 <br />
                 <span className="font-bold text-3xl text-green-700 font-mono ">
-                  24
+                  {totalFavs}
                 </span>
               </div>
             </Link>

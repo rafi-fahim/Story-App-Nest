@@ -13,6 +13,7 @@ const page = () => {
   const [profilePic, setProfilePic] = useState(image);
   const [userStories, setUserStories] = useState(null);
   const [storyCount, setStoryCount] = useState(0);
+  const [totalFavs, setTotalFavs] = useState(0)
   const [totalLikes, setTotalLikes] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +43,15 @@ const page = () => {
         });
         setUserStories(stories);
         setStoryCount(stories.length);
-        console.log(stories);
+        const userRef = collection(db, "users", `${user.uid}`, "favourites");
+        const userFavouriteSnapshot = getDocs(userRef);
+        userFavouriteSnapshot.then((data) => {
+          let userFav = [];
+          data.forEach((doc) => {
+            userFav.push({ ...doc.data(), id: doc.id });
+          });
+          setTotalFavs(userFav.length)
+        });
       });
     }
   }, [user]);
@@ -59,6 +68,7 @@ const page = () => {
               userName={user.displayName}
               storyCount={storyCount}
               userPic={profilePic}
+              totalFavs={totalFavs}
             />
             <div className="flex flex-col items-center justify-center gap-4">
               {userStories &&
@@ -75,7 +85,7 @@ const page = () => {
                       storyId={perUser.id}
                       userId={perUser.uid}
                       userPic={profilePic}
-                      edited={perUser.edited ? perUser.edited : false }
+                      edited={perUser.edited ? perUser.edited : false}
                       key={perUser.id}
                     />
                   );

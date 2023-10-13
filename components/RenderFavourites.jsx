@@ -12,10 +12,11 @@ const RenderFavourites = ({}) => {
   const { user } = UserAuth();
   useEffect(() => {
     if (user) {
+      // User reference to the database
       const userRef = collection(db, "users", `${user.uid}`, "favourites");
-
+      //getting data from Database
       const userFavouriteSnapshot = getDocs(userRef);
-
+      //performing a loop to do the ??
       userFavouriteSnapshot.then((data) => {
         let userFav = [];
 
