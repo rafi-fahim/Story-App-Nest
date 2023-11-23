@@ -7,7 +7,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-slate-950" >
           <AuthContextProvider>
             <Navbar />
             {children}

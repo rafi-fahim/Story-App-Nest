@@ -7,9 +7,9 @@ const LandingArea = () => {
   const { user } = UserAuth();
   return (
     <>
-      <div className="flex text-left flex-col justify-center gap-2 p-4 align-middle h-screen w-full landing-bg">
+      <div className="hello flex text-left flex-col text-white justify-center gap-2 p-4 align-middle h-[90vh] w-full landing-bg">
         <div className="flex flex-col justify-left align-middle">
-          <h1 className="text-blue-800 lg:text-6xl text-3xl font-semibold">
+          <h1 className=" lg:text-6xl text-3xl font-semibold">
             Welcome to FSR Stories <br />
             <span className="lg:text-3xl text-xl">{user && `${user.displayName}`}</span>
           </h1>
@@ -18,14 +18,14 @@ const LandingArea = () => {
         <div className="flex gap-1 text-2xl justify-left font-semibold align-middle">
             TO 
             <TypeAnimation
-              className="text-blue-900 font-extrabold text-2xl"
+              className=" font-extrabold text-white text-2xl"
               sequence={[" LEARN FROM IT",2000,  " USE THEM",2000,  " BE BETTER", 2000]}
               speed={20}
               repeat={Infinity}
               />
         </div>
-        {!user && <p className="text-xl text-slate-700">Tip: Login to gain full access</p>}
-        {user && <p className="text-xl text-slate-700">Tip: Click on your profile photo at the top right corner to see magic</p>}
+        {!user && <p className="text-xl ">Tip: Login to gain full access</p>}
+        {user && <p className="text-xl ">Tip: Click on your profile photo at the top right corner to see magic</p>}
       </div>
     </>
   );

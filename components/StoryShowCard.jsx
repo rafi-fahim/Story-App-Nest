@@ -66,6 +66,8 @@ const StoryShowCard = ({
     }
   }, [userDoc]);
 
+  console.log(favourite);
+
   const handleFavourite = () => {
     if (user) {
       isFavourite((prev) => !prev);

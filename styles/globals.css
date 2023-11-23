@@ -1,28 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji&family=Permanent+Marker&family=Ysabeau&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius+Unicase&family=Kdam+Thmor+Pro&display=swap');
 
-.bg-transparent-slate{
-    background: rgba(189, 189, 189, 0.397)
+@font-face {
+  font-family: "cubano";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("./fonts/Cubano.ttf") format("ttf");
 }
-.modal-hw{
-    width: clamp(50%, 700px, 90%);
-    height: min(50%, 300px);
+
+*{
+  font-family: var(--kdam-pro);
 }
-.about-card-w{
-    width: clamp(20% , 900px, 98%);
+
+:root {
+  --kdam-pro: 'Kdam Thmor Pro', sans-serif;
+  --delius: 'Delius Unicase', cursive;
+}
+
+.bg-transparent-slate {
+  background: rgba(189, 189, 189, 0.397);
+}
+.modal-hw {
+  width: clamp(50%, 700px, 90%);
+  height: min(50%, 300px);
+}
+.about-card-w {
+  width: clamp(20%, 900px, 98%);
 }
 .edit-card-w {
-    width: clamp(20%, 1000px, 99%);
+  width: clamp(20%, 1000px, 99%);
 }
 .none {
-    display: none;
-    /* background-color: #2ff1ff; */
+  display: none;
+  /* background-color: #2ff1ff; */
 }
-.landing-bg{
-    background: linear-gradient( to bottom, hsl(0, 100%, 75%),hsl(50, 100%, 75%),hsl(100, 100%, 75%), hsl(150, 100%, 75%), hsl(200, 100%, 75%),hsl(250, 100%, 75%),hsl(300, 100%, 75%),hsl(350, 100%, 75%));
+.landing-bg {
+  background: linear-gradient(to bottom, #3535354b, #35353577),
+    url("../public//landing-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .fav-card:hover > span {
-    @apply text-green-400
+  @apply text-green-400;
 }
+.bg-card {
+  background: linear-gradient(to bottom, #1a1a1a42, #18181883),
+    url("../public/book.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hello {
+  font-family: "cubano", sans-serif;
+}
+/* ---------------WHY CARD CSS ------------------ */
+.back {
+  transform: rotateY(180deg);
+    @apply bg-white gap-5 font-medium flex flex-col items-center justify-center text-center;
+}
+.containers {
+  width: 230px;
+  height: 370px;
+  perspective: 800px;
+}
+
+.containers:hover > .card {
+  @apply cursor-pointer;
+  transform: rotateY(180deg);
+}
+
+.card {
+  @apply h-full w-full flex flex-col items-center justify-center relative transition-transform;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  @apply h-full w-full shadow-md absolute p-4;
+  border-radius: 0.1rem;
+  backface-visibility: hidden;
+}
+.front {
+  @apply flex flex-col gap-4 text-center font-medium text-white justify-center items-center ;
+}
+.back-1 {
+  background: linear-gradient(to bottom, #18181873 , #181818b2) , url("../public//book.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.back-2 {
+  background: linear-gradient(to bottom, #18181873 , #181818b2) , url("../public//gossip.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.back-3 {
+  background: linear-gradient(to bottom, #18181873 , #181818b2) , url("../public//joy.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/*---------------- WHY CARD CSS ENDS -------- */

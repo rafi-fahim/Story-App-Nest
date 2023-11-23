@@ -18,8 +18,8 @@ const CRSFrom = ({ user }) => {
     userPic: "",
     edited: false,
   });
-  console.log(storyData);
-  console.log(user);
+  
+  
 
   const handleStorySubmit = async () => {
     try {
@@ -39,7 +39,6 @@ const CRSFrom = ({ user }) => {
         userPic: user.photoURL,
         time: dateTime
       });
-      console.log("Document written with ID: ", docRef.id);
       if(alert("Your story has been submitted successfully 😀")) {}
       else {
         window.location.reload()
@@ -105,12 +104,6 @@ const CRSFrom = ({ user }) => {
       );
     }
   };
-  function surprise() {
-    if (storyData.class === "8" && storyData.section === "daffo") {
-      alert("We are in same section, brother!!😮");
-      // return "We are in same section, Brother"
-    }
-  }
   return (
     <>
       <motion.div 

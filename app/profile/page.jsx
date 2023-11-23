@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { UserAuth } from "@/app/context/AuthContext";
-import { query, where, onSnapshot } from "firebase/firestore";
-import { storiesRef } from "../firebase";
+import { query, where, onSnapshot, collection, getDocs } from "firebase/firestore";
+import { storiesRef , db } from "../firebase";
 import ProfileCard from "@/components/ProfileCard";
 import StoryShowCard from "@/components/StoryShowCard";
 import image from "@/public/empty-profile.png";
@@ -58,7 +58,7 @@ const page = () => {
 
   return (
     <>
-      <div className="p-4 bg-slate-200">
+      <div className="p-4 bg-slate-950">
         {loading ? (
           <Loading />
         ) : user ? (
