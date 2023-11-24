@@ -36,11 +36,18 @@
   display: none;
   /* background-color: #2ff1ff; */
 }
-.landing-bg {
+.landing-bg-1 {
   background: linear-gradient(to bottom, #3535354b, #35353577),
     url("../public//landing-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: 2;
+}
+.landing-bg-2 {
+  background: linear-gradient(to bottom, #353535a6, #35353577),
+  url("../public//book.jpg");
+background-size: cover;
+background-repeat: no-repeat;
 }
 .fav-card:hover > span {
   @apply text-green-400;

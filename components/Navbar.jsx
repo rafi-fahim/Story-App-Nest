@@ -88,25 +88,25 @@ const Navbar = () => {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className={`bg-indigo-400 z-50 left-0 bottom-0 absolute flex items-center justify-center flex-col text-start w-[150px] h-screen`}
+            className={`bg-white z-50 font-semibold text-xl left-0 bottom-0 absolute flex items-center justify-center flex-col text-start w-[150px] h-screen`}
           >
             <Link
               onClick={() => handleToggleMenu()}
-              className="hover:underline flex justify-center items-center transition-all hover:scale-110 p-3 border w-full hover:bg-indigo-500  "
+              className="hover:underline flex justify-center items-center transition-all hover:scale-110 p-3 border w-full hover:bg-black hover:text-white text-black  "
               href="/"
             >
               Home
             </Link>
             <Link
               onClick={() => handleToggleMenu()}
-              className="hover:underline flex justify-center items-center transition-all hover:scale-110 p-3 border w-full hover:bg-indigo-500"
+              className="hover:underline flex justify-center items-center transition-all hover:scale-110 p-3 border w-full hover:bg-black hover:text-white text-black"
               href="/read-story"
             >
               Read Story
             </Link>
             <Link
               onClick={() => handleToggleMenu()}
-              className="hover:underline flex justify-center items-center transition-all hover:scale-110 p-3 border w-full hover:bg-indigo-500"
+              className="hover:underline flex justify-center items-center transition-all hover:scale-110 p-3 border w-full hover:bg-black hover:text-white text-black"
               href="/about-us"
             >
               About Us
@@ -114,7 +114,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => handleToggleMenu()}
-              className="hover:underline text-red-200 transition-all hover:scale-110 p-3 border w-full hover:bg-red-500  "
+              className="hover:underline transition-all hover:scale-110 p-3 border w-full hover:bg-black hover:text-white text-black"
             >
               Close Menu
             </button>
@@ -126,7 +126,7 @@ const Navbar = () => {
               <Link
                 href="/create-story"
                 type="button"
-                className="w-36 h-8 transition p-[2px] flex justify-center items-center rounded-3xl bg-indigo-500 hover:bg-indigo-800 border border-slate-200"
+                className="w-36 h-8 transition p-[2px] flex justify-center items-center rounded-3xl bg-white hover:bg-black hover:text-white text-black border border-slate-200"
               >
                 Create Story
               </Link>

@@ -1,4 +1,3 @@
-import WhyCard from "./sub-components/WhyCard";
 
 const Why = () => {
   const cardInfo = [
@@ -35,12 +34,19 @@ const Why = () => {
           <div className="containers">
             <div className="card">
               <div className="front back-1">
-                <h1 className="font-extrabold text-3xl font-delius">Hover to see:</h1>
+                <h1 className="font-extrabold text-3xl font-delius">
+                  <span className="max-sm:hidden">Hover</span>
+                  <span className="lg:hidden md:hidden">Tap</span> to see:
+                </h1>
                 <br />
-                <p className="text-2xl font-extralight uppercase font-kdam-pro">{cardInfo[0].title}</p>
+                <p className="text-2xl font-extralight uppercase font-kdam-pro">
+                  {cardInfo[0].title}
+                </p>
               </div>
               <div className="back">
-                <h1 className="font-extrabold  text-3xl">{cardInfo[0].title}</h1>
+                <h1 className="font-extrabold  text-3xl">
+                  {cardInfo[0].title}
+                </h1>
                 <p>{cardInfo[0].description}</p>
               </div>
             </div>
@@ -49,12 +55,19 @@ const Why = () => {
           <div className="containers">
             <div className="card">
               <div className="front back-2">
-                <h1 className="font-extrabold text-3xl font-delius">Hover to see:</h1>
+                <h1 className="font-extrabold text-3xl font-delius">
+                  <span className="max-sm:hidden">Hover</span>
+                  <span className="lg:hidden md:hidden">Tap</span> to see:
+                </h1>
                 <br />
-                <p className="text-2xl font-extralight uppercase font-kdam-pro">{cardInfo[1].title}</p>
+                <p className="text-2xl font-extralight uppercase font-kdam-pro">
+                  {cardInfo[1].title}
+                </p>
               </div>
               <div className="back">
-                <h1 className="font-extrabold  text-3xl">{cardInfo[1].title}</h1>
+                <h1 className="font-extrabold  text-3xl">
+                  {cardInfo[1].title}
+                </h1>
                 <p>{cardInfo[1].description}</p>
               </div>
             </div>
@@ -63,12 +76,19 @@ const Why = () => {
           <div className="containers">
             <div className="card">
               <div className="front back-3">
-                <h1 className="font-extrabold text-3xl font-delius">Hover to see:</h1>
+                <h1 className="font-extrabold text-3xl font-delius">
+                  <span className="max-sm:hidden">Hover</span>
+                  <span className="lg:hidden md:hidden">Tap</span> to see:
+                </h1>
                 <br />
-                <p className="text-2xl font-extralight uppercase font-kdam-pro">{cardInfo[2].title}</p>
+                <p className="text-2xl font-extralight uppercase font-kdam-pro">
+                  {cardInfo[2].title}
+                </p>
               </div>
               <div className="back">
-                <h1 className="font-extrabold  text-3xl">{cardInfo[2].title}</h1>
+                <h1 className="font-extrabold  text-3xl">
+                  {cardInfo[2].title}
+                </h1>
                 <p>{cardInfo[2].description}</p>
               </div>
             </div>
