@@ -107,4 +107,15 @@ background-repeat: no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
 }
+.hidden-el {
+  opacity: 0;
+  transition: all 1s;
+  filter: blur(5px);
+  transform: translateX(-50px);
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
 /*---------------- WHY CARD CSS ENDS -------- */

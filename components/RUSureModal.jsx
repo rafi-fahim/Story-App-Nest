@@ -21,7 +21,7 @@ const RUSureModal = ({ handleDelete ,handleClose, storyId }) => {
     <Backdrop onClick={handleClose}>
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="modal-hw flex justify-center flex-col gap-2 items-center rounded-md bg-violet-700 text-white"
+        className="modal-hw z-50 flex justify-center flex-col gap-2 items-center rounded-md bg-violet-700 text-white"
         variants={dropIn}
         initial="hidden"
         animate="visible"

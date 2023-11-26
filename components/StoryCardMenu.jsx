@@ -11,7 +11,7 @@ const StoryCardMenu = ({ modalOpen, setMenu, postUserId , storyId }) => {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1, rotate: 360 }}
     >
-      {user.uid == postUserId && (
+      {user && user.uid == postUserId && (
         <motion.div whileTap={{ scale: 1.6 }} className="hover:bg-stone-300 flex items-center gap-1 p-2 text-start rounded transition cursor-pointer">
           <svg
             className="h-4 w-4"
@@ -23,7 +23,7 @@ const StoryCardMenu = ({ modalOpen, setMenu, postUserId , storyId }) => {
           <Link href={`/profile/${storyId}`}>Edit Story</Link>
         </motion.div>
       )}
-      {user.uid == postUserId && (
+      {user && user.uid == postUserId && (
         <button
           onClick={() => modalOpen()}
           className="text-red-600 hover:bg-stone-300 flex items-center gap-1 p-2 text-start rounded transition cursor-pointer"
@@ -52,7 +52,7 @@ const StoryCardMenu = ({ modalOpen, setMenu, postUserId , storyId }) => {
         >
           <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
         </svg>
-        {user.uid == postUserId ? "Close" : "Nothing Here 😛"}
+        {user && user.uid == postUserId ? "Close" : "Nothing Here 😛"}
       </button>
     </motion.div>
   );

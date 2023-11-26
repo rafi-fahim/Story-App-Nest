@@ -1,7 +1,5 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link"
-import { motion } from "framer-motion";
 
 const ProfileCard = ({ userName, userPic, storyCount , totaLike, totalFavs }) => {
   return (
@@ -17,27 +15,27 @@ const ProfileCard = ({ userName, userPic, storyCount , totaLike, totalFavs }) =>
           />
           <p className="font-bold text-2xl text-slate-800">\{userName}</p>
         </div>
-          <div className="flex items-start justify-center gap-2">
-            <div className="p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
+          <div className="flex items-start justify-center font-bold text-white gap-2">
+            <div className="p-2 bg-black hover:bg-white hover:text-black hover:border-2 hover:border-black rounded-lg w-32 h-24 text-center">
               Story Count
               <br />
-              <span className="font-bold text-3xl text-green-700 font-mono ">
+              <span className="text-3xl text-green-700  font-kdam-pro ">
                 {storyCount}
               </span>
             </div>
             <Link href="/profile/favourites">
-            <div className="fav-card hover:bg-slate-600 transition-all hover:-translate-y-3 hover:text-white p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
+            <div className="fav-card  transition-all hover:-translate-y-3 p-2 bg-black hover:bg-white hover:text-black hover:border-2 hover:border-black rounded-lg w-32 h-24 text-center">
                 Favoutires
                 <br />
-                <span className="font-bold text-3xl text-green-700 font-mono ">
+                <span className="text-3xl text-green-700  font-kdam-pro ">
                   {totalFavs}
                 </span>
               </div>
             </Link>
-            <div className="fav-card hover:bg-slate-600 transition-all hover:-translate-y-3 hover:text-white hover:cursor-not-allowed p-2 bg-slate-300 rounded-lg w-32 h-24 text-center">
+            <div className="fav-card  transition-all hover:-translate-y-3 hover:cursor-not-allowed p-2 bg-black hover:bg-white hover:text-black hover:border-2 hover:border-black rounded-lg w-32 h-24 text-center">
               Likes
               <br />
-              <span className="font-bold text-3xl text-violet-700 font-mono ">
+              <span className="text-3xl text-violet-700  font-kdam-pro ">
                 {totaLike}
               </span>
             </div>

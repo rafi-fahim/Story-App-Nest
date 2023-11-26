@@ -23,6 +23,7 @@ const Why = () => {
       img: "../public/book.jpg",
     },
   ];
+
   return (
     <>
       <div className="flex justify-center w-full  items-center bg-slate-950 flex-col">

@@ -18,7 +18,7 @@ const CreateStory = () => {
 
   return (
     <>
-      <div className="w-full p-4 h-screen flex justify-center items-center">
+      <div className="w-full min-h-screen p-4 flex justify-center items-center">
         {loading ? (
           <Loading />
         ) : user ? (

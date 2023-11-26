@@ -18,8 +18,6 @@ const CRSFrom = ({ user }) => {
     userPic: "",
     edited: false,
   });
-  
-  
 
   const handleStorySubmit = async () => {
     try {
@@ -37,11 +35,11 @@ const CRSFrom = ({ user }) => {
         ...storyData,
         uid: user.uid,
         userPic: user.photoURL,
-        time: dateTime
+        time: dateTime,
       });
-      if(alert("Your story has been submitted successfully 😀")) {}
-      else {
-        window.location.reload()
+      if (alert("Your story has been submitted successfully 😀")) {
+      } else {
+        window.location.reload();
       }
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -54,7 +52,8 @@ const CRSFrom = ({ user }) => {
           <input
             type="text"
             placeholder="Your Class"
-            className="border shadow-md shadow-slate-600 w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
+            className="border shadow-sm text-black shadow-white w-[230px] h-9 rounded-lg p-2"
+            required
             name="class"
             onChange={(e) => {
               setStoryData((prev) => {
@@ -68,7 +67,8 @@ const CRSFrom = ({ user }) => {
           <div className="flex flec-col gap-1">
             <label htmlFor="section">Choose your section</label>
             <select
-              className="bg-light-dark"
+              className="bg-white text-black"
+              required
               onChange={(e) => {
                 setStoryData((prev) => {
                   return {
@@ -80,22 +80,22 @@ const CRSFrom = ({ user }) => {
               name="section"
               id="section"
             >
-              <option className="bg-light-dark" value="none">
+              <option className="bg-black text-white" value="none">
                 --none--
               </option>
-              <option className="bg-light-dark" value="dahlia">
+              <option className="bg-black text-white" value="dahlia">
                 Dahlia
               </option>
-              <option className="bg-light-dark" value="daffo">
+              <option className="bg-black text-white" value="daffo">
                 Daffo
               </option>
-              <option className="bg-light-dark" value="dolon">
+              <option className="bg-black text-white" value="dolon">
                 Dolon
               </option>
-              <option className="bg-light-dark" value="shapla">
+              <option className="bg-black text-white" value="shapla">
                 Shapla
               </option>
-              <option className="bg-light-dark" value="mohua">
+              <option className="bg-black text-white" value="mohua">
                 Mohua
               </option>
             </select>
@@ -106,12 +106,12 @@ const CRSFrom = ({ user }) => {
   };
   return (
     <>
-      <motion.div 
-          className="shadow-lg shadow-indigo-500 p-4 w-[600px] h-[400px] border border-slate-950 rounded-xl bg-[#4568E4] "
-          initial={{ scale:0 }}
-          animate={{ scale:1 }}
-        >
-        <h1 className="text-center text-white text-2xl">
+      <motion.div
+        className="shadow font-kdam-pro shadow-white p-4 w-[600px] h-auto border border-slate-950 rounded-xl text-white bg-black "
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+      >
+        <h1 className="text-center font-extrabold text-white text-2xl">
           Write your fabilous Story. 😀
         </h1>
         <form
@@ -123,8 +123,9 @@ const CRSFrom = ({ user }) => {
         >
           <motion.input
             type="text"
+            required
             placeholder="Your name"
-            className="border shadow-md shadow-slate-600 w-[230px]  h-9 rounded-lg p-1 bg-light-dark border-col-1"
+            className="border shadow-sm text-black shadow-white w-[230px] p-2 h-9 rounded-lg"
             onChange={(e) => {
               setStoryData((prev) => {
                 return {
@@ -139,12 +140,13 @@ const CRSFrom = ({ user }) => {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="occupation"
-              className="border shadow-md shadow-slate-600 w-[230px] text-white h-9 rounded-lg p-1 bg-light-dark border-col-1"
+              className="border shadow-sm shadow-white w-[230px] text-white h-9 rounded-lg p-[5px] bg-black"
             >
               Choose your Occupation
             </label>
             <select
-              className="flex flec-col text-slate-100 rounded-sm bg-slate-900 gap-1 shadow-md shadow-slate-600 w-[230px]"
+              className="flex flec-col h-9 p-2 rounded-sm bg-black gap-1 shadow-sm shadow-white w-[230px]"
+              required
               onChange={(e) => {
                 setStoryData((prev) => {
                   return {
@@ -177,7 +179,8 @@ const CRSFrom = ({ user }) => {
             <motion.input
               type="text"
               placeholder="Your Class"
-              className="border shadow-md shadow-slate-600 w-[230px] h-9 rounded-lg bg-light-dark p-1 border-green-400"
+              required
+              className="border shadow-sm text-black shadow-white w-[230px] h-9 rounded-lg bg-light-dark p-1 border-green-400"
               name="class"
               onChange={(e) => {
                 setStoryData((prev) => {
@@ -192,7 +195,8 @@ const CRSFrom = ({ user }) => {
           {checkCpsc()}
           <textarea
             name="storyText"
-            className="border bg-light-dark w-full text-black border-emerald-700 p-3 "
+            className="border text-black w-full border-white p-3 "
+            required
             placeholder={`${storyData.name}${
               storyData.name ? ", " : ""
             }Write your story`}
@@ -209,7 +213,7 @@ const CRSFrom = ({ user }) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.5 }}
             type="submit"
-            className="justify-items-center h-10 w-20 rounded hover:bg-emerald-950 hover:border-emerald-400 hover:border-2 bg-emerald-700 text-white "
+            className="justify-items-center h-10 w-20 rounded hover:bg-black hover:border-white hover:text-white hover:border-2 bg-white text-black "
           >
             Submit
           </motion.button>

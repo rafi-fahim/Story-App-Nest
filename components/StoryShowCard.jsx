@@ -43,23 +43,25 @@ const StoryShowCard = ({
   const modalOpen = () => setDialogueBox(true); 
   const modalClose = () => setDialogueBox(false);
 
-  const userRef = query(collection(db, "users", `${user.uid}`, "favourites"), where("isFavourite", "==" , true))
-  const docRef = doc(db, "users", `${user.uid}`, "favourites", `${storyId}`);
+  const userRef = user && query(collection(db, "users", `${user.uid}`, "favourites"), where("isFavourite", "==" , true))
+  const docRef = user && doc(db, "users", `${user.uid}`, "favourites", `${storyId}`);
 
   useEffect(() => {
-    let users = [];
-    const querySnapshot = getDocs(userRef);
-    querySnapshot.then((data) => {
-      data.forEach((doc) => {
-        users.push({ ...doc.data(), id: doc.id });
+    if (user) {
+      let users = [];
+      const querySnapshot = getDocs(userRef);
+      querySnapshot.then((data) => {
+        data.forEach((doc) => {
+          users.push({ ...doc.data(), id: doc.id });
+        });
+        setUserDoc(users);
+        
       });
-      setUserDoc(users);
-      
-    });
-  }, []);
+    }
+  }, [user]);
 
   useEffect(() => {
-    if (userDoc) {
+    if (userDoc && user) {
       userDoc.forEach((element) => {
           isFavourite(element.isFavourite);
       });
